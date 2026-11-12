@@ -163,40 +163,31 @@ return function(cfg, remaps)
     }
 
     if cfg.e_count.enabled then
-        helpers.res_mirror(
-            {
-                src = cfg.e_count.show_c
-                    and { x = 1, y = 28, w = 49, h = 18 }
-                    or { x = 13, y = 37, w = 37, h = 9 },
-                dst = cfg.e_count.show_c
-                    and { x = cfg.e_count.x, y = cfg.e_count.y, w = 49 * cfg.e_count.size, h = 18 * cfg.e_count.size }
-                    or { x = cfg.e_count.x, y = cfg.e_count.y, w = 37 * cfg.e_count.size, h = 9 * cfg.e_count.size },
-                depth = 2,
-                color_key = (cfg.e_count.colorkey and not cfg.use_shaders) and {
-                    input = "#DDDDDD",
-                    output = cfg.text_col,
-                } or nil,
-                shader = (cfg.e_count.colorkey and cfg.use_shaders) and "text" or nil,
-            },
-            cfg.thin_res[1], cfg.thin_res[2]
-        )
-        helpers.res_mirror(
-            {
-                src = cfg.e_count.show_c
-                    and { x = 1, y = 28, w = 49, h = 18 }
-                    or { x = 13, y = 37, w = 37, h = 9 },
-                dst = cfg.e_count.show_c
-                    and { x = cfg.e_count.x, y = cfg.e_count.y, w = 49 * cfg.e_count.size, h = 18 * cfg.e_count.size }
-                    or { x = cfg.e_count.x, y = cfg.e_count.y, w = 37 * cfg.e_count.size, h = 9 * cfg.e_count.size },
-                depth = 2,
-                color_key = (cfg.e_count.colorkey and not cfg.use_shaders) and {
-                    input = "#DDDDDD",
-                    output = cfg.text_col,
-                } or nil,
-                shader = (cfg.e_count.colorkey and cfg.use_shaders) and "text" or nil,
-            },
-            cfg.tall_res[1], cfg.tall_res[2]
-        )
+        local function e_mirror(ec, res)
+            helpers.res_mirror(
+                {
+                    src = ec.show_c
+                        and { x = 1, y = 28, w = 49, h = 18 }
+                        or { x = 13, y = 37, w = 37, h = 9 },
+                    dst = ec.show_c
+                        and { x = ec.x, y = ec.y, w = 49 * ec.size, h = 18 * ec.size }
+                        or { x = ec.x, y = ec.y, w = 37 * ec.size, h = 9 * ec.size },
+                    depth = 2,
+                    color_key = (ec.colorkey and not cfg.use_shaders) and {
+                        input = "#DDDDDD",
+                        output = cfg.text_col,
+                    } or nil,
+                    shader = (ec.colorkey and cfg.use_shaders) and "text" or nil,
+                },
+                res[1], res[2]
+            )
+        end
+        e_mirror({ show_c = cfg.e_count.show_c, colorkey = cfg.e_count.colorkey,
+                   x = cfg.e_count.thin.x, y = cfg.e_count.thin.y, size = cfg.e_count.thin.size },
+                 cfg.thin_res)
+        e_mirror({ show_c = cfg.e_count.show_c, colorkey = cfg.e_count.colorkey,
+                   x = cfg.e_count.tall.x, y = cfg.e_count.tall.y, size = cfg.e_count.tall.size },
+                 cfg.tall_res)
     end
 
     -- thin mirrors
@@ -238,28 +229,39 @@ return function(cfg, remaps)
     end
 
     if cfg.thin_percent.enabled then
-        if cfg.use_shaders then
-            helpers.res_mirror(
-                {
-                    src = { x = cfg.thin_res[1] - 93, y = cfg.thin_res[2] - 221, w = 33, h = 25 },
-                    dst = { x = cfg.thin_percent.x, y = cfg.thin_percent.y, w = 33 * cfg.thin_percent.size, h = 25 * cfg.thin_percent.size },
-                    depth = 3,
-                    shader = cfg.percentages_match_text and "text" or "percentages",
-                },
-                cfg.thin_res[1], cfg.thin_res[2]
-            )
-        else
-            for _, ck in ipairs(percentage_colors) do
+        if cfg.thin_percent.colorkey then
+            if cfg.use_shaders then
                 helpers.res_mirror(
                     {
                         src = { x = cfg.thin_res[1] - 93, y = cfg.thin_res[2] - 221, w = 33, h = 25 },
                         dst = { x = cfg.thin_percent.x, y = cfg.thin_percent.y, w = 33 * cfg.thin_percent.size, h = 25 * cfg.thin_percent.size },
                         depth = 3,
-                        color_key = ck,
+                        shader = cfg.percentages_match_text and "text" or "percentages",
                     },
                     cfg.thin_res[1], cfg.thin_res[2]
                 )
+            else
+                for _, ck in ipairs(percentage_colors) do
+                    helpers.res_mirror(
+                        {
+                            src = { x = cfg.thin_res[1] - 93, y = cfg.thin_res[2] - 221, w = 33, h = 25 },
+                            dst = { x = cfg.thin_percent.x, y = cfg.thin_percent.y, w = 33 * cfg.thin_percent.size, h = 25 * cfg.thin_percent.size },
+                            depth = 3,
+                            color_key = ck,
+                        },
+                        cfg.thin_res[1], cfg.thin_res[2]
+                    )
+                end
             end
+        else
+            helpers.res_mirror(
+                {
+                    src = { x = cfg.thin_res[1] - 93, y = cfg.thin_res[2] - 221, w = 33, h = 25 },
+                    dst = { x = cfg.thin_percent.x, y = cfg.thin_percent.y, w = 33 * cfg.thin_percent.size, h = 25 * cfg.thin_percent.size },
+                    depth = 3,
+                },
+                cfg.thin_res[1], cfg.thin_res[2]
+            )
         end
     end
 
@@ -302,28 +304,39 @@ return function(cfg, remaps)
     end
 
     if cfg.tall_percent.enabled then
-        if cfg.use_shaders then
-            helpers.res_mirror(
-                {
-                    src = { x = 291, y = 16163, w = 33, h = 25 },
-                    dst = { x = cfg.tall_percent.x, y = cfg.tall_percent.y, w = 33 * cfg.tall_percent.size, h = 25 * cfg.tall_percent.size },
-                    depth = 3,
-                    shader = cfg.percentages_match_text and "text" or "percentages",
-                },
-                cfg.tall_res[1], cfg.tall_res[2]
-            )
-        else
-            for _, ck in ipairs(percentage_colors) do
+        if cfg.tall_percent.colorkey then
+            if cfg.use_shaders then
                 helpers.res_mirror(
                     {
                         src = { x = 291, y = 16163, w = 33, h = 25 },
                         dst = { x = cfg.tall_percent.x, y = cfg.tall_percent.y, w = 33 * cfg.tall_percent.size, h = 25 * cfg.tall_percent.size },
                         depth = 3,
-                        color_key = ck,
+                        shader = cfg.percentages_match_text and "text" or "percentages",
                     },
                     cfg.tall_res[1], cfg.tall_res[2]
                 )
+            else
+                for _, ck in ipairs(percentage_colors) do
+                    helpers.res_mirror(
+                        {
+                            src = { x = 291, y = 16163, w = 33, h = 25 },
+                            dst = { x = cfg.tall_percent.x, y = cfg.tall_percent.y, w = 33 * cfg.tall_percent.size, h = 25 * cfg.tall_percent.size },
+                            depth = 3,
+                            color_key = ck,
+                        },
+                        cfg.tall_res[1], cfg.tall_res[2]
+                    )
+                end
             end
+        else
+            helpers.res_mirror(
+                {
+                    src = { x = 291, y = 16163, w = 33, h = 25 },
+                    dst = { x = cfg.tall_percent.x, y = cfg.tall_percent.y, w = 33 * cfg.tall_percent.size, h = 25 * cfg.tall_percent.size },
+                    depth = 3,
+                },
+                cfg.tall_res[1], cfg.tall_res[2]
+            )
         end
     end
 
