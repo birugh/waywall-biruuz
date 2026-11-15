@@ -60,8 +60,8 @@ local cfg = {
     launch_paceman_key = "Shift-P",
 
     -- during game actions
-    toggle_ninbot_key = "F6", 
-    toggle_remaps_key = "Shift-Delete",
+    toggle_ninbot_key = "F6",
+    toggle_remaps_key = "Shift-T",
 
 
     -- ==== KEYBOARD ====
