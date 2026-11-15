@@ -17,15 +17,12 @@ return {
 
     -- craft: rm 
     ["3"] = "M",
-    -- ["M"] = "3", remapped for piechart
 
     -- craft: tn 
     ["5"] = "N",
-    -- ["N"] = "5", remapped for piechart
 
     -- craft: sh 
     ["1"] = "H",
-    -- ["H"] = "1", remapped for piechart
 
     -- crafts: ie, wi
     ["I"] = "Q",
