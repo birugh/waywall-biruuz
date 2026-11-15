@@ -10,7 +10,7 @@ The user communicates in Indonesian — respond in Indonesian.
 
 ## One repo, symlinked as the live config
 
-`~/<folder-dotfiles>/waywall-biruuz` is the only repo (part of the user's dotfiles collection in `~/dotfiles-biru`). `~/.config/waywall` is a symlink to it, so edits in the repo are live immediately and there is nothing to sync. The old standalone clone sits at `~/.config/waywall.bak` — a backup, not edited.
+`~/<folder-dotfiles>/waywall-biruuz` is the only repo (part of the user's dotfiles collection in `~/<folder-dotfiles>`). `~/.config/waywall` is a symlink to it, so edits in the repo are live immediately and there is nothing to sync. The old standalone clone sits at `~/.config/waywall.bak` — a backup, not edited.
 
 **Never push to GitHub unless the user explicitly asks.**
 
