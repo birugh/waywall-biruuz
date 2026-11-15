@@ -464,12 +464,12 @@ return function(cfg, remaps)
     end
 
     local function resize_helper(mode, run, ingame_only)
-        local resize = chat_mode_helper(function()
+        local resize = function()
             if mode.f3_safe and waywall.get_key("F3") then
                 return false
             end
             return run()
-        end)
+        end
 
         if ingame_only then
             return helpers.ingame_only(resize)
