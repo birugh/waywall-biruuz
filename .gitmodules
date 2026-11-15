@@ -1,0 +1,3 @@
+[submodule "scripts/mcsr-calcsens"]
+	path = scripts/mcsr-calcsens
+	url = git@github.com:Esensats/mcsr-calcsens.git
