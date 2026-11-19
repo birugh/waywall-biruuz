@@ -9,7 +9,7 @@ Menukar A dan O untuk craft ow, wo, dan got.
 | Tombol | Jadi |
 | --- | --- |
 | `A` | `O` |
-| `O` | `A` |
+| `O` | `L` |
 
 ## move to root in piechart
 
@@ -26,7 +26,7 @@ Tombol 2 dan backspace saling bertukar untuk menghapus satu kata.
 
 | Tombol | Jadi |
 | --- | --- |
-| `2` | `backspace` |
+| `2` | `8` |
 | `backspace` | `2` |
 
 ## craft: ket
@@ -35,7 +35,8 @@ Menukar Z dan K untuk craft ket.
 
 | Tombol | Jadi |
 | --- | --- |
-| `Z` | `K` |
+| `Z` | `S` |
+| `S` | `K` |
 | `K` | `Z` |
 
 ## craft: rm
@@ -44,7 +45,14 @@ Tombol 3 jadi M untuk craft rm.
 
 | Tombol | Jadi |
 | --- | --- |
-| `3` | `M` |
+| `3` | `KPPLUS` |
+
+## craft: -
+
+| Tombol | Jadi |
+| --- | --- |
+| `X` | `G` |
+| `G` | `X` |
 
 ## craft: tn
 
@@ -52,7 +60,7 @@ Tombol 5 jadi N untuk craft tn.
 
 | Tombol | Jadi |
 | --- | --- |
-| `5` | `N` |
+| `F` | `N` |
 
 ## craft: sh
 
@@ -78,7 +86,7 @@ Menukar D dan B untuk craft be, bre, br, bo, dan sb.
 | Tombol | Jadi |
 | --- | --- |
 | `D` | `B` |
-| `B` | `D` |
+| `B` | `P` |
 
 ## crafts: el, fl
 
@@ -87,7 +95,7 @@ Menukar L dan V untuk craft el dan fl.
 | Tombol | Jadi |
 | --- | --- |
 | `L` | `V` |
-| `V` | `L` |
+| `V` | `A` |
 
 ## crafts: pp, esp
 
@@ -96,7 +104,7 @@ Menukar P dan C untuk craft pp dan esp.
 | Tombol | Jadi |
 | --- | --- |
 | `P` | `C` |
-| `C` | `P` |
+| `C` | `D` |
 
 ## to easily open piechart, also without crouching
 
@@ -104,8 +112,7 @@ RIGHTSHIFT dan MOUSE4 saling bertukar supaya piechart mudah dibuka, juga tanpa c
 
 | Tombol | Jadi |
 | --- | --- |
-| `RIGHTSHIFT` | `MOUSE4` |
-| `MOUSE4` | `RIGHTSHIFT` |
+| `MOUSE4` | `BACKSPACE` |
 
 ## to select words from end to the beginning
 
@@ -115,14 +122,3 @@ MOUSE5 dan HOME saling bertukar untuk memilih kata dari akhir ke awal.
 | --- | --- |
 | `MOUSE5` | `HOME` |
 | `HOME` | `MOUSE5` |
-
-## piechart
-
-Tombol piechart: 6 ke 1, Y ke 2, H ke 3, N ke 5.
-
-| Tombol | Jadi |
-| --- | --- |
-| `6` | `1` |
-| `Y` | `2` |
-| `H` | `3` |
-| `N` | `5` |

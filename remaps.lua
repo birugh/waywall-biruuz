@@ -1,25 +1,30 @@
 return {
     -- crafts: ow, wo, got
     ["A"] = "O",
-    ["O"] = "A",
+    ["O"] = "L",
 
     -- move to root in piechart
     ["grave"] = "0",
     ["0"] = "grave",
 
     -- remove word
-    ["2"] = "backspace",
+    ["2"] = "8",
     ["backspace"] = "2",
 
     -- craft: ket 
-    ["Z"] = "K",
+    ["Z"] = "S",
+    ["S"] = "K",
     ["K"] = "Z",
 
     -- craft: rm 
-    ["3"] = "M",
+    ["3"] = "KPPLUS",
+
+    -- craft: -
+    ["X"] = "G",
+    ["G"] = "X",
 
     -- craft: tn 
-    ["5"] = "N",
+    ["F"] = "N",
 
     -- craft: sh 
     ["1"] = "H",
@@ -30,27 +35,20 @@ return {
 
     -- crafts: be, bre, br, bo, sb
     ["D"] = "B",
-    ["B"] = "D",
+    ["B"] = "P",
 
     -- crafts: el, fl
     ["L"] = "V",
-    ["V"] = "L",
+    ["V"] = "A",
 
     -- crafts: pp, esp
     ["P"] = "C",
-    ["C"] = "P",
+    ["C"] = "D",
 
     -- to easily open piechart, also without crouching
-    ["RIGHTSHIFT"] = "MOUSE4",
-    ["MOUSE4"] = "RIGHTSHIFT",
+    ["MOUSE4"] = "BACKSPACE",
 
     -- to select words from end to the beginning
     ["MOUSE5"] = "HOME",
     ["HOME"] = "MOUSE5",
-
-    -- piechart
-    ["6"] = "1",
-    ["Y"] = "2",
-    ["H"] = "3",
-    ["N"] = "5",
 }
