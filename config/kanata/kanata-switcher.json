@@ -1,0 +1,10 @@
+[
+  {
+    "default": "normal"
+  },
+  {
+    "class": "^waywall$",
+    "layer": "mcsr_app"
+  }
+]
+

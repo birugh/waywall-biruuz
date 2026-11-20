@@ -1,0 +1,68 @@
+(defalias
+  ctrl-layer (multi lctl (layer-while-held ctrl))
+  mcsr (multi rsft (layer-while-held mcsr_shift))
+  mcsr_f3 (layer-while-held mcsr_shift)
+  fnl (layer-while-held fn)
+  cap (tap-hold 200 200 esc @fnl)
+)
+
+(defsrc
+  lalt    lmet    ralt    rmet    caps
+  z       x       c       v       f       e       r
+  1       2       3       4       5       q       t
+  a       d       g       b
+  lctl
+  mwu
+  mwd
+)
+
+(deflayer normal
+  lmet    lalt    rmet    ralt    caps
+  z       x       c       v       f       e       r
+  1       2       3       4       5       q       t
+  a       d       g       b
+  lctl
+  mwu
+  mwd
+)
+
+(deflayer mcsr_app
+  lmet    @mcsr    rmet    ralt    @cap
+  z       x        c       v       f       e       r
+  _       _        _       _       _       _       _
+  _       _        _       _
+  @ctrl-layer
+  mwu
+  mwd
+)
+
+(deflayer mcsr_shift
+  _      _      _      _     _
+  f3     f5     f6     f7    n     esc     p
+  _      _      _      _     _     f8      f9
+  _      _      _      _
+  _
+  _
+  _
+)
+
+(deflayer fn
+  _      _      _      _      _
+  f3     _      _      _      n      7      2
+  h      8      kp+    4     5     6     9
+  x      c      v     d 
+  _
+  _
+  _
+)
+
+(deflayer ctrl
+  _ _ _ _ _
+  _ _ _ _ _ _ _
+  _ _ _ _ _ _ _
+  _ _ _ _
+  _
+  pgup
+  pgdn
+)
+
