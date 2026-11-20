@@ -1,0 +1,18 @@
+[Unit]
+Description=Kanata Keyboard Remapping Service
+After=local-fs.target
+
+[Service]
+Type=simple
+User=@SERVICE_USER@
+SupplementaryGroups=input
+
+ExecStart=@KANATA_BIN@ --cfg @HOME@/.config/kanata/main.kbd --port 127.0.0.1:7070
+
+Restart=on-failure
+RestartSec=3
+
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target
