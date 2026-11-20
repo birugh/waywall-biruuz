@@ -9,25 +9,27 @@ return {
 
     -- remove word
     ["2"] = "8",
-    ["backspace"] = "2",
+    ["8"] = "2",
 
     -- craft: ket 
-    ["Z"] = "S",
-    ["S"] = "K",
+    ["Z"] = "K",
     ["K"] = "Z",
 
     -- craft: rm 
     ["3"] = "KPPLUS",
+    ["KPPLUS"] = "3",
 
     -- craft: -
-    ["X"] = "G",
+    ["X"] = "A",
     ["G"] = "X",
 
     -- craft: tn 
     ["F"] = "N",
+    ["N"] = "F",
 
     -- craft: sh 
     ["1"] = "H",
+    ["H"] = "1",
 
     -- crafts: ie, wi
     ["I"] = "Q",
@@ -39,7 +41,7 @@ return {
 
     -- crafts: el, fl
     ["L"] = "V",
-    ["V"] = "A",
+    ["V"] = "G",
 
     -- crafts: pp, esp
     ["P"] = "C",
@@ -47,6 +49,7 @@ return {
 
     -- to easily open piechart, also without crouching
     ["MOUSE4"] = "BACKSPACE",
+    ["BACKSPACE"] = "MOUSE4",
 
     -- to select words from end to the beginning
     ["MOUSE5"] = "HOME",

@@ -10,9 +10,9 @@
   <entry key="direction_help_enabled" value="true"/>
   <entry key="hotkey_boat_code" value="65598"/>
   <entry key="hotkey_boat_modifier" value="0"/>
-  <entry key="hotkey_decrement_code" value="65562"/>
+  <entry key="hotkey_decrement_code" value="69201"/>
   <entry key="hotkey_decrement_modifier" value="0"/>
-  <entry key="hotkey_increment_code" value="65563"/>
+  <entry key="hotkey_increment_code" value="69193"/>
   <entry key="hotkey_increment_modifier" value="0"/>
   <entry key="hotkey_lock_code" value="65587"/>
   <entry key="hotkey_lock_modifier" value="0"/>
