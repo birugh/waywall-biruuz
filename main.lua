@@ -84,7 +84,7 @@ return function(cfg, remaps)
     deps.resolutions = require("modules.resolutions")(cfg, deps)
     config = require("modules.actions")(cfg, deps)
 
-    -- ==== DEBUG TEXT ====
+    -- ==== AUTOSTART & EVENTS ====
     waywall.listen("load", function()
         if cfg.debug_text then
             state.debug_text1 = waywall.text(debug_text,
@@ -95,6 +95,15 @@ return function(cfg, remaps)
                 { x = 13, y = 13, color = "#000000", size = 3 })
             state.debug_text4 = waywall.text(debug_text,
                 { x = 14, y = 14, color = "#000000", size = 3 })
+        end
+
+        if cfg.autostart_paceman and not deps.tools.is_pacem_running() then
+            waywall.exec("java -jar " .. paths.pacem .. " --nogui")
+        end
+
+        if cfg.autostart_ninbot and not deps.tools.is_ninb_running() then
+            waywall.exec("java -Dawt.useSystemAAFontSettings=on -jar " .. paths.nb)
+            waywall.show_floating(true)
         end
     end)
 

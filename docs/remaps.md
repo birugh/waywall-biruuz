@@ -27,7 +27,7 @@ Tombol 2 dan backspace saling bertukar untuk menghapus satu kata.
 | Tombol | Jadi |
 | --- | --- |
 | `2` | `8` |
-| `backspace` | `2` |
+| `8` | `2` |
 
 ## craft: ket
 
@@ -35,8 +35,7 @@ Menukar Z dan K untuk craft ket.
 
 | Tombol | Jadi |
 | --- | --- |
-| `Z` | `S` |
-| `S` | `K` |
+| `Z` | `K` |
 | `K` | `Z` |
 
 ## craft: rm
@@ -46,12 +45,13 @@ Tombol 3 jadi M untuk craft rm.
 | Tombol | Jadi |
 | --- | --- |
 | `3` | `KPPLUS` |
+| `KPPLUS` | `3` |
 
 ## craft: -
 
 | Tombol | Jadi |
 | --- | --- |
-| `X` | `G` |
+| `X` | `A` |
 | `G` | `X` |
 
 ## craft: tn
@@ -61,6 +61,7 @@ Tombol 5 jadi N untuk craft tn.
 | Tombol | Jadi |
 | --- | --- |
 | `F` | `N` |
+| `N` | `F` |
 
 ## craft: sh
 
@@ -69,6 +70,7 @@ Tombol 1 jadi H untuk craft sh.
 | Tombol | Jadi |
 | --- | --- |
 | `1` | `H` |
+| `H` | `1` |
 
 ## crafts: ie, wi
 
@@ -95,7 +97,7 @@ Menukar L dan V untuk craft el dan fl.
 | Tombol | Jadi |
 | --- | --- |
 | `L` | `V` |
-| `V` | `A` |
+| `V` | `G` |
 
 ## crafts: pp, esp
 
@@ -113,6 +115,7 @@ RIGHTSHIFT dan MOUSE4 saling bertukar supaya piechart mudah dibuka, juga tanpa c
 | Tombol | Jadi |
 | --- | --- |
 | `MOUSE4` | `BACKSPACE` |
+| `BACKSPACE` | `MOUSE4` |
 
 ## to select words from end to the beginning
 

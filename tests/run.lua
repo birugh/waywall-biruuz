@@ -3,7 +3,7 @@
 -- Mencakup semua file yang ditulis: config/*, modules/*, main.lua, init.lua.
 -- remaps.lua & extras.lua cukup syntax check (T-13.4).
 
-local root = os.getenv("HOME") .. "/.config/waywall/"
+local root = (arg and arg[0] and arg[0]:match("^(.*)[/\\][^/\\]+$") and (arg[0]:match("^(.*)[/\\][^/\\]+$") .. "/../")) or (os.getenv("HOME") .. "/.config/waywall/")
 
 local function die(msg)
     print("FAIL: " .. msg)
@@ -87,6 +87,7 @@ local expected_keys = {
     "stretched_measure", "use_shaders", "thin", "wide", "tall",
     "toggle_fullscreen_key", "launch_paceman_key", "toggle_ninbot_key", "toggle_remaps_key",
     "xkb_config", "remaps_text_config", "sens_change", "enable_resize_animations",
+    "autostart_ninbot", "autostart_paceman",
 }
 local missing = {}
 for _, k in ipairs(expected_keys) do
