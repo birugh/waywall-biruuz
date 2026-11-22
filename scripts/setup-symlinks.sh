@@ -10,6 +10,55 @@ readonly NINJABRAIN_TARGET="$HOME_DIR/.java/.userPrefs/ninjabrainbot/prefs.xml"
 
 readonly KANATA_SOURCE="$HOME_DIR/.config/waywall/config/kanata"
 readonly KANATA_TARGET="$HOME_DIR/.config/kanata"
+readonly HOTBAR_SOURCE="$HOME_DIR/.config/waywall/config/mpk/hotbar.nbt"
+readonly LOCATION_STATE_DIR="${MCSR_LOCATION_STATE_DIR:-$PWD/.minecraft-save-manager}"
+readonly LOCATION_FILE="$LOCATION_STATE_DIR/locations"
+readonly FOCUS_FILE="$LOCATION_STATE_DIR/focused"
+
+MINECRAFT_FOLDER="${MINECRAFT_FOLDER:-}"
+HOTBAR_TARGET=""
+
+validate_minecraft_folder() {
+    local candidate="${1%/}"
+    if [[ "$(basename -- "$candidate")" != ".minecraft" || ! -d "$candidate" ]]; then
+        error "MINECRAFT_FOLDER harus direktori .minecraft yang sudah ada: $candidate"
+        return 1
+    fi
+    MINECRAFT_FOLDER="$candidate"
+    HOTBAR_TARGET="$MINECRAFT_FOLDER/hotbar.nbt"
+}
+
+save_location() {
+    mkdir -p -- "$LOCATION_STATE_DIR"
+    touch -- "$LOCATION_FILE"
+    grep -Fxq -- "$MINECRAFT_FOLDER" "$LOCATION_FILE" || printf '%s\n' "$MINECRAFT_FOLDER" >> "$LOCATION_FILE"
+    printf '%s\n' "$MINECRAFT_FOLDER" > "$FOCUS_FILE"
+}
+
+choose_minecraft_folder() {
+    local candidate choice i=1
+    mapfile -t locations < <([[ -f "$LOCATION_FILE" ]] && awk 'NF' "$LOCATION_FILE")
+    if ((${#locations[@]})); then
+        printf 'Saved Minecraft folders:\n'
+        for candidate in "${locations[@]}"; do printf '  %d) %s\n' "$i" "$candidate"; ((i++)); done
+        printf '  n) New folder\n'
+        read -r -p 'Choose folder: ' choice
+        if [[ "$choice" =~ ^[0-9]+$ ]] && ((choice >= 1 && choice <= ${#locations[@]})); then
+            validate_minecraft_folder "${locations[choice-1]}" && save_location
+            return
+        fi
+        [[ "$choice" == n ]] || { error 'Pilihan tidak valid.'; return 1; }
+    fi
+    read -r -p 'Minecraft folder (.minecraft): ' candidate
+    validate_minecraft_folder "$candidate" && save_location
+}
+
+select_focused_location() {
+    [[ -n "$MINECRAFT_FOLDER" ]] || {
+        if [[ -f "$FOCUS_FILE" ]]; then validate_minecraft_folder "$(<"$FOCUS_FILE")" || true; fi
+    }
+    [[ -n "$MINECRAFT_FOLDER" ]] || choose_minecraft_folder
+}
 
 # Logging
 log() {
@@ -31,18 +80,15 @@ error() {
 # Backup
 backup_existing() {
     local target="$1"
-    local backup="${target}.bak"
+    local backup
 
     [[ -e "$target" || -L "$target" ]] || return 0
 
-    if [[ -e "$backup" || -L "$backup" ]]; then
-        backup="${target}.$(date '+%Y%m%d-%H%M%S').bak"
-
-        if [[ -e "$backup" || -L "$backup" ]]; then
-            error "Backup destination sudah ada: $backup"
-            return 1
-        fi
-    fi
+    while :; do
+        backup="${target}.bak-$(date '+%Y%m%d-%H%M%S-%N')"
+        [[ ! -e "$backup" && ! -L "$backup" ]] && break
+        sleep 0.001
+    done
 
     mv -- "$target" "$backup"
 
@@ -95,10 +141,15 @@ main() {
     log "Starting symlink setup..."
     printf '\n'
 
+    select_focused_location
+
     create_symlink "$NINJABRAIN_SOURCE" "$NINJABRAIN_TARGET"
     printf '\n'
 
     create_symlink "$KANATA_SOURCE" "$KANATA_TARGET"
+    printf '\n'
+
+    create_symlink "$HOTBAR_SOURCE" "$HOTBAR_TARGET"
     printf '\n'
 
     success "All symlinks processed successfully!"
