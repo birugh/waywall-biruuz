@@ -5,10 +5,15 @@ After=graphical-session.target
 [Service]
 Type=simple
 
+ExecStartPre=/usr/bin/bash -c 'for i in {1..150}; do if (: > /dev/tcp/127.0.0.1/7070) 2>/dev/null; then exit 0; fi; sleep 0.2; done; exit 1'
+
 ExecStart=@SWITCHER_BIN@ -p 7070
 
 Restart=on-failure
 RestartSec=3
 
+TimeoutStartSec=35
+
 [Install]
 WantedBy=graphical-session.target
+
