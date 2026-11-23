@@ -14,13 +14,13 @@
   <entry key="hotkey_decrement_modifier" value="0"/>
   <entry key="hotkey_increment_code" value="69193"/>
   <entry key="hotkey_increment_modifier" value="0"/>
-  <entry key="hotkey_lock_code" value="65587"/>
+  <entry key="hotkey_lock_code" value="65576"/>
   <entry key="hotkey_lock_modifier" value="0"/>
-  <entry key="hotkey_redo_code" value="65576"/>
+  <entry key="hotkey_redo_code" value="65563"/>
   <entry key="hotkey_redo_modifier" value="0"/>
   <entry key="hotkey_reset_code" value="65579"/>
   <entry key="hotkey_reset_modifier" value="0"/>
-  <entry key="hotkey_undo_code" value="65575"/>
+  <entry key="hotkey_undo_code" value="65562"/>
   <entry key="hotkey_undo_modifier" value="0"/>
   <entry key="language_v2" value="en-US"/>
   <entry key="mismeasure_warning_enabled" value="true"/>
@@ -36,3 +36,4 @@
   <entry key="window_x" value="2064"/>
   <entry key="window_y" value="233"/>
 </map>
+
