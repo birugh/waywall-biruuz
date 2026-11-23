@@ -4,8 +4,8 @@
 
 (defalias
   ctrl-layer (multi lctl (layer-while-held ctrl))
-  maccel-f7 (multi (cmd /home/biru/dotfiles-biru/waywall-biruuz/scripts/toggle-maccel-sens.sh) f7)
-  maccel-reset (cmd maccel set param sens-mult 1.0)
+  maccel-f7 (cmd-output-keys /home/biru/dotfiles-biru/waywall-biruuz/scripts/maccel-eye-zoom.sh)
+  maccel-reset (cmd /home/biru/dotfiles-biru/waywall-biruuz/scripts/maccel-reset.sh)
   mcsr (multi rsft (layer-while-held mcsr_shift))
   fnl (layer-while-held fn)
   cap (tap-hold 200 200 caps @fnl)
