@@ -101,9 +101,9 @@ return function(cfg, remaps)
             waywall.exec("java -jar " .. paths.pacem .. " --nogui")
         end
 
-        if cfg.autostart_ninbot and not deps.tools.is_ninb_running() then
-            waywall.exec("java -Dawt.useSystemAAFontSettings=on -jar " .. paths.nb)
-            waywall.show_floating(true)
+        if cfg.autostart_ninbot then
+            waywall.sleep(1000)
+            config.actions[cfg.toggle_ninbot_key]()
         end
     end)
 
