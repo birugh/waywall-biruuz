@@ -3,7 +3,7 @@
   mcsr (multi rsft (layer-while-held mcsr_shift))
   mcsr_f3 (layer-while-held mcsr_shift)
   fnl (layer-while-held fn)
-  cap (tap-hold 200 200 esc @fnl)
+  cap (tap-hold 200 200 caps @fnl)
 )
 
 (defsrc
