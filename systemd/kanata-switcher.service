@@ -1,6 +1,5 @@
 [Unit]
 Description=Kanata Switcher Service
-After=graphical-session.target
 
 [Service]
 Type=simple
@@ -15,5 +14,5 @@ RestartSec=3
 TimeoutStartSec=35
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
 
