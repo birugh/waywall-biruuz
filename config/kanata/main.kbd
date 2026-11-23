@@ -1,56 +1,61 @@
+(defcfg
+  danger-enable-cmd yes
+)
+
 (defalias
   ctrl-layer (multi lctl (layer-while-held ctrl))
+  maccel-f7 (multi (cmd /home/biru/dotfiles-biru/waywall-biruuz/scripts/toggle-maccel-sens.sh) f7)
+  maccel-reset (cmd maccel set param sens-mult 1.0)
   mcsr (multi rsft (layer-while-held mcsr_shift))
-  mcsr_f3 (layer-while-held mcsr_shift)
   fnl (layer-while-held fn)
   cap (tap-hold 200 200 caps @fnl)
 )
 
 (defsrc
-  lalt    lmet    ralt    rmet    caps
-  z       x       c       v       f       e       r
-  1       2       3       4       5       q       t
-  a       d       g       b
+  lalt lmet ralt rmet caps
+  z x c v f e r
+  1 2 3 4 5 q t
+  a d g b
   lctl
   mwu
   mwd
 )
 
 (deflayer normal
-  lmet    lalt    rmet    ralt    caps
-  z       x       c       v       f       e       r
-  1       2       3       4       5       q       t
-  a       d       g       b
+  lmet lalt rmet ralt caps
+  z x c v f e r
+  1 2 3 4 5 q t
+  a d g b
   lctl
   mwu
   mwd
 )
 
 (deflayer mcsr_app
-  lmet    @mcsr    rmet    ralt    @cap
-  z       x        c       v       f       e       r
-  _       _        _       _       _       _       _
-  _       _        _       _
+  lmet @mcsr rmet ralt @cap
+  z x c v f e r
+  _ _ _ _ _ _ _
+  _ _ _ _
   @ctrl-layer
   mwu
   mwd
 )
 
 (deflayer mcsr_shift
-  _      _      _      _     _
-  f3     f5     f6     f7    n     esc     p
-  _      _      _      _     _     f8      f9
-  _      _      _      _
+  _ _ _ _ _
+  f3 f5 f6 @maccel-f7 n esc p
+  _ _ _ _ _ f8 f9
+  _ _ _ @maccel-reset
   _
   _
   _
 )
 
 (deflayer fn
-  _      _      _      _      _
-  f3     _      _      _      n      7      2
-  h      8      kp+    4     5     6     9
-  x      c      v     d 
+  _ _ _ _ _
+  f3 _ _ f7 n 7 2
+  h 8 kp+ 4 5 6 9
+  x c v d
   _
   _
   _
@@ -58,11 +63,11 @@
 
 (deflayer ctrl
   _ _ _ _ _
-  _ _ _ _ _ _ _
+  _ _ _ _ _ _
   _ _ _ _ _ _ _
   _ _ _ _
+  _
   _
   pgup
   pgdn
 )
-
