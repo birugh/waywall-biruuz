@@ -6,6 +6,7 @@
   ctrl-layer (multi lctl (layer-while-held ctrl))
   maccel-f7 (cmd-output-keys /home/biru/dotfiles-biru/waywall-biruuz/scripts/maccel-eye-zoom.sh)
   maccel-reset (cmd /home/biru/dotfiles-biru/waywall-biruuz/scripts/maccel-reset.sh)
+  maccel-force-normal (cmd /home/biru/dotfiles-biru/waywall-biruuz/scripts/maccel-force-normal.sh)
   mcsr (multi rsft (layer-while-held mcsr_shift))
   fnl (layer-while-held fn)
   cap (tap-hold 200 200 caps @fnl)
@@ -15,7 +16,7 @@
   lalt lmet ralt rmet caps
   z x c v f e r
   1 2 3 4 5 q t
-  a d g b
+  a d g b n
   lctl
   mwu
   mwd
@@ -25,7 +26,7 @@
   lmet lalt rmet ralt caps
   z x c v f e r
   1 2 3 4 5 q t
-  a d g b
+  a d g b n
   lctl
   mwu
   mwd
@@ -35,7 +36,7 @@
   lmet @mcsr rmet ralt @cap
   z x c v f e r
   _ _ _ _ _ _ _
-  _ _ _ _
+  _ _ _ _ _
   @ctrl-layer
   mwu
   mwd
@@ -45,7 +46,7 @@
   _ _ _ _ _
   f3 f5 f6 @maccel-f7 n esc p
   _ _ _ _ _ f8 f9
-  _ _ _ @maccel-reset
+  _ _ _ @maccel-reset @maccel-force-normal
   _
   _
   _
@@ -55,7 +56,7 @@
   _ _ _ _ _
   f3 _ _ f7 n 7 2
   h 8 kp+ 4 5 6 9
-  x c v d
+  x c v d _
   _
   _
   _
@@ -65,7 +66,7 @@
   _ _ _ _ _
   _ _ _ _ _ _
   _ _ _ _ _ _ _
-  _ _ _ _
+  _ _ _ _ _
   _
   lctrl
   pgup
