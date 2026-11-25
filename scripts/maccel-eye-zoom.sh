@@ -12,10 +12,10 @@ case "$state" in
     ;;
   normal)
     maccel set param sens-mult 0.10415
-    printf 'eye\n' > "$state_file"
+    printf 'zoom\n' > "$state_file"
     printf '(f7)\n'
     ;;
-  eye)
+  zoom)
     maccel set param sens-mult 1.0
     printf 'normal\n' > "$state_file"
     printf '(f7)\n'
